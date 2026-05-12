@@ -1,0 +1,79 @@
+import tensorflow as tf
+
+## resource @ https://www.tensorflow.org/
+
+tensor_zero_d = tf.constant(4)
+
+print(tensor_zero_d)
+# This is a zero dimensional tensor with a singular value of (4)
+
+tensor_one_d = tf.constant([2,0,-3,8,90])
+print(tensor_one_d)
+# This is a one dimensional tensor with an array of numbers 2, 0, -3,8,90 with 5 elements (shape)
+# if we were to add a decimal to 90 (i.e., "90.", we would get a float dtype instead of an integer which is what we currently see)
+
+tensor_two_d = tf.constant([
+    [1,2,0],
+    [3,5,-1],
+    [1,5,6],
+    [2,3,8]
+])
+
+print(tensor_two_d)
+
+# We will now do a 3d tensor
+tensor_three_d = tf.constant([
+    [[1,2,0],
+     [3,5,-1]],
+
+    [[10,2,0],
+     [1,0,2]],
+
+    [[5,8,0],
+     [2,7,0]],
+
+    [[2,1,9],
+     [4,-3,32]]
+])
+
+print(tensor_three_d)
+
+print(tensor_three_d.shape)
+
+# This will be my own attempt to create a 4d Tensor
+
+tensor_four_d = tf.constant([
+    [[[1,2,3],
+     [4,5,6]],
+    [[1,2,3],
+     [4,5,6]]],
+    [[[1,2,3],
+      [4,5,6]],
+     [[1,2,3],
+      [4,5,6]]]
+])
+print(tensor_four_d)
+
+# This is a stacked 3D tensor (making it 4D),
+# this iteration would continue to be true by stacking (n-1)D tensors
+# which would then make it a nD tensor
+
+print(tensor_four_d.ndim)
+
+## You can also make is such that the tensor dtype is different
+## Say, tensor_one_d = tf.constant([2,0,-3,8,90], dtype=tf.float64)
+## you can make it float 16, 32, etc but the precision and memory allocation changes
+
+tensor_bool = tf.constant([True,True,False])
+print(tensor_bool)
+
+tensor_string = tf.constant(["hello world","hi"])
+print(tensor_string)
+
+import numpy as np
+
+np_array = np.array([1,2,4])
+print(np_array)
+
+converted_tensor = tf. convert_to_tensor(np_array)
+print(converted_tensor)
