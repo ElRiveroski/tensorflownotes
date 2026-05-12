@@ -1,3 +1,5 @@
+"""
+
 import tensorflow as tf
 
 ## resource @ https://www.tensorflow.org/
@@ -77,3 +79,52 @@ print(np_array)
 
 converted_tensor = tf. convert_to_tensor(np_array)
 print(converted_tensor)
+
+eye_tensor = tf.eye(
+    num_rows = 5,
+    num_columns=None,
+    batch_shape=[2,4],
+    dtype=tf.dtypes.float32,
+    name=None
+)
+
+print(eye_tensor)
+
+fill_tensor = tf.fill(
+    [1,3,4], 5, name=None, layout=None
+)
+print(fill_tensor)
+
+ones_tensor = tf.ones(
+    [5,3],
+    dtype=tf.dtypes.float32,
+    name=None,
+    layout=None
+)
+print(ones_tensor)
+
+ones_like_tensor = tf.ones_like(
+    fill_tensor, dtype=None, name=None, layout=None
+)
+print(ones_like_tensor)
+
+zeros_tensor = tf.zeros(
+    [3,2],
+    dtype=tf.dtypes.float32,
+    name=None,
+    layout=None
+)
+print(zeros_tensor)
+
+t = tf.constant([[[1,1,1],[2,2,2]],[[3,3,3],[4,4,4]]])
+tf.rank(t)
+tf.size(t)
+
+random_tensor = tf.random.normal(
+    [3,2],
+    mean=100.0, stddev=0.05, seed=None
+)
+# We can use the mean and stddev to influence the values we obtain
+print(random_tensor)
+
+# Left At min :58 https://www.youtube.com/watch?v=IA3WxTTPXqQ
