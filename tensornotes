@@ -127,4 +127,139 @@ random_tensor = tf.random.normal(
 # We can use the mean and stddev to influence the values we obtain
 print(random_tensor)
 
-# Left At min :58 https://www.youtube.com/watch?v=IA3WxTTPXqQ
+random_tensor = tf.random.uniform(
+    [5,],
+    minval=0,
+    maxval=None, # maxvalue is defaulted to one of not specified
+    dtype=tf.dtypes.float32,
+    seed=None,
+    name=None
+)
+print(random_tensor)
+
+tf.random.set_seed(5)
+print(tf.random.uniform(shape=[3,], maxval = 5, dtype=tf.int32, seed = 10))
+print(tf.random.uniform(shape=[3,], maxval = 5, dtype=tf.int32, seed = 10))
+print(tf.random.uniform(shape=[3,], maxval = 5, dtype=tf.int32, seed = 10))
+print(tf.random.uniform(shape=[3,], maxval = 5, dtype=tf.int32, seed = 10))
+print(tf.random.uniform(shape=[3,], maxval = 5, dtype=tf.int32, seed = 10))
+## you can toy around with the seed variable to get different responses
+
+tensor_indexed = tf.constant([3,6,2,4,6,66,7])
+print(tensor_indexed)
+# tensor is zero indexed!
+print(tensor_indexed[0:4])
+print(tensor_indexed[1:5+1])
+print(tensor_indexed[1:6:2]) # goes up by 2!
+print(tensor_indexed[4:-2]) #prints up to the last 2 numbers
+
+# now if we want to address a 2D tensor
+tensor_two_d = tf.constant([[1,2,0],
+   [3,5,-1],
+   [1,5,6],
+   [2,3,8]])
+print(tensor_two_d[0:3,0:2])
+print(tensor_two_d[0:3,:])
+print(tensor_two_d[...,1])
+
+tensow_three_d = tf.constant([[[1,2,0],
+      [3,5,-1]],
+
+      [[5,8,0],
+                                [2,7,0]],
+
+                               [[10,2,0],
+                                [1,0,2]],
+
+                               [[2,1,9],
+                                [4,-3,32]]])
+print(tensor_three_d[0,:,:])
+print(tensor_three_d[0,0,:])
+print(tensor_three_d[0,:,-1])
+
+x_abs = tf.constant([-2.25, 3.25])
+tf.abs(x_abs)
+
+x_abs_complex = tf.constant([-2.25 + 4.25j]) #can also be used to run complex numbers
+tf.abs(x_abs_complex)
+
+tf.sqrt((-2.25)**2 + 4.75**2)
+
+x_1 = tf.constant([5,3,6,6,4,6], dtype = tf.int32)
+x_2 = tf.constant([7,6,2,6,7,11], dtype = tf.int32)
+print(tf.add(x_1,x_2))
+print(tf.multiply(x_1,x_2))
+print(tf.subtract(x_1,x_2))
+print(tf.divide(x_1,x_2))
+
+x_1 = tf.constant([5,3,6,6,4,6], dtype = tf.int32)
+x_2 = tf.constant([7], dtype = tf.int32)
+print(tf.add(x_1,x_2))
+
+x_1 = tf.constant([5,3,6,6,4,6], dtype = tf.float32)
+x_2 = tf.constant([[7],[5],[3]], dtype = tf.float32)
+
+print(x_1.shape)
+print(x_2.shape)
+print(tf.math.multiply(x_1, x_2))
+
+x_argmax = tf.constant([[2,20,30,3,6],
+[3,11,16,1,8],
+[14,45,23,5,27]])
+print(x_argmax.shape)
+
+x_argmax = tf.constant([2,20,30,3,6])
+print(tf.math.argmax(x_argmax))
+## why do we get a value of 2?
+## it's for the index of the argument with the max value
+## same works if we changed the function to argmin
+
+x_argmax = tf.constant([[2,20,30,3,6],
+[3,11,16,1,8],
+[14,45,23,5,27]])
+print(tf.math.argmax(x_argmax))
+# If we add argmax, axis = 0 it will consider columns
+# if we add axis = 1 it will consider rows
+
+x = tf.constant([[2, 2], [3, 3]])
+y = tf.constant([[3, 0], [1, 4]])
+tf.pow(x, y)
+
+## when considering `reduce_` it also works
+## by considering the columns or rows as indicated
+
+print(tensor_two_d)
+
+tf.math.top_k(
+    tensor_two_d,
+    k=1,
+    sorted=True,
+    index_type=tf.dtypes.int32,
+    name=None
+)
+
+### Linear algebra application
+
+x_1 = ([[1,2,0],
+     [3,5,-1]])
+x_2 = ([[1,2,0],
+     [3,5,-1],
+        [4,5,6]])
+
+
+tf.linalg.matmul(
+    x_1,
+    x_2,
+    transpose_a=False,
+    transpose_b=False,
+    adjoint_a=False,
+    adjoint_b=False,
+    a_is_sparse=False,
+    b_is_sparse=False,
+    output_type=None,
+    grad_a=False,
+    grad_b=False,
+    name=None
+)
+
+tf.transpose(x_1)
