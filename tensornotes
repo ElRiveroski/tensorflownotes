@@ -263,3 +263,26 @@ tf.linalg.matmul(
 )
 
 tf.transpose(x_1)
+print(tensor_three_d)
+
+print(x_1)
+print(x_2)
+
+x_1 = tf.constant([[[1,2],
+                   [3,-1]],
+                  [[10,0],
+                   [1,2]],
+                  [[5,0],
+                   [2,0]]])
+
+x_2 = tf.constant([[[5,1,4],
+                    [34,15,1]],
+                   [[1,2,2],
+                    [5,3,2]],
+                   [[2,2,3],
+                    [1,1,1]]])
+
+print(x_1)
+print(x_2)
+
+print(tf.linalg.matmul(x_1, x_2))
